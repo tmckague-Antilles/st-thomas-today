@@ -484,6 +484,23 @@ footer a{color:inherit}
   setInterval(function(){ferry();hello()},30000);
   setInterval(function(){hours();tides()},300000);
 })();
+
+/* Keep an installed home-screen copy fresh: when the app is opened or brought back to the front, check whether a newer page has been published and load it. */
+(function(){
+  if(!/(^|\.)github\.io$|^localhost$/.test(location.hostname)||!window.fetch)return;
+  var busy=false;
+  function check(){
+    if(busy||document.visibilityState==='hidden')return;
+    busy=true;
+    fetch(location.pathname,{method:'HEAD',cache:'no-store'}).then(function(r){
+      var theirs=Date.parse(r.headers.get('last-modified')||''),mine=Date.parse(document.lastModified);
+      if(r.ok&&theirs&&mine&&theirs-mine>5000&&location.search!=='?v='+theirs)location.replace(location.pathname+'?v='+theirs);
+    }).catch(function(){}).then(function(){busy=false});
+  }
+  check();
+  document.addEventListener('visibilitychange',check);
+  window.addEventListener('pageshow',check);
+})();
 </script>
 </body>
 </html>

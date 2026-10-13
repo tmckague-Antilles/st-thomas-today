@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>St. Thomas Today</title>
+<meta name="description" content="Today on St. Thomas: weather, beach pick, cruise crowds, ferries and events.">
+<meta name="theme-color" content="#E6F1EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1D23" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="St. Thomas">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E6F1EE; --card:#FFFFFF; --ink:#13313B; --soft:#4F6B73; --line:#D3E3DF;
+  --sea:#0F5E73; --sun:#F2B93B; --bloom:#B8296F; --ok:#2E7D5B; --warn:#B8296F;
+  --hero-ink:#FFFFFF; --storm:#6B1F4E;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1D23; --card:#132A32; --ink:#E6F1EE; --soft:#9DB8BE; --line:#22414A;
+    --sea:#1B7A92; --sun:#F2B93B; --bloom:#E05A9C; --ok:#5CC195; --warn:#E05A9C;
+    --storm:#7A2459;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1D23; --card:#132A32; --ink:#E6F1EE; --soft:#9DB8BE; --line:#22414A;
+  --sea:#1B7A92; --sun:#F2B93B; --bloom:#E05A9C; --ok:#5CC195; --warn:#E05A9C;
+  --storm:#7A2459;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:560px;margin:0 auto;padding:20px 16px 40px}
+h1,h2,.temp,.pick,.crowd-word,.fr-in{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+h1{font-size:2.25rem;line-height:1.05;margin:0;font-weight:800;letter-spacing:-.02em}
+.card{background:var(--card);border-radius:18px;padding:18px 18px 16px;margin-bottom:14px;border:1px solid var(--line)}
+h2{font-size:1.2rem;margin:0 0 10px;font-weight:700}
+h3{font-size:.95rem;margin:16px 0 8px;font-weight:700;color:var(--bloom)}
+
+header{padding:8px 4px 18px}
+.date{color:var(--soft);margin-top:6px}
+.stale{margin-top:10px;background:var(--card);border:1px solid var(--bloom);color:var(--ink);border-radius:12px;padding:10px 12px;font-size:.93rem}
+
+/* storm mode: shown only while a storm threatens the USVI */
+.storm{background:var(--storm);color:var(--hero-ink);border:none}
+.storm p{margin:0 0 10px}
+.prep{margin:0 0 14px;padding-left:1.2em}
+
+/* weather hero */
+.weather{background:var(--sea);color:var(--hero-ink);border:none;border-radius:24px;padding:22px 20px;position:relative;overflow:hidden}
+.weather .sunball{position:absolute;right:-30px;top:-30px;width:150px;height:150px;border-radius:50%;background:var(--sun);opacity:.95}
+.weather h2{color:inherit;position:relative}
+.temp{font-size:4.5rem;font-weight:800;line-height:1;letter-spacing:-.04em;position:relative}
+.temp small{font-size:1rem;font-weight:500;letter-spacing:0;margin-left:6px;opacity:.85}
+.wx-note{position:relative;margin:10px 0 14px;max-width:34ch;opacity:.95}
+.sunrow{display:flex;gap:18px;position:relative;font-size:.95rem;margin-bottom:16px}
+.sunrow b{display:block;font-size:1.15rem}
+.hours{position:relative;margin:0 0 16px}
+.hours-title{font-size:.85rem;opacity:.9;margin-bottom:6px}
+.hours-row{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;text-align:center;font-variant-numeric:tabular-nums}
+.hr{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;font-size:.75rem;white-space:nowrap}
+.hr-temp{font-weight:700;font-size:.92rem}
+.hr-bar{width:100%;max-width:22px;height:34px;border-radius:4px;background:rgba(255,255,255,.16);display:flex;align-items:flex-end;overflow:hidden}
+.hr-bar i{display:block;width:100%;background:#fff;opacity:.9;border-radius:4px 4px 0 0}
+.btns{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:.92rem;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.35)}
+.btn.solid{background:#fff;color:#0F5E73;border-color:#fff}
+
+/* heads-up */
+.alert{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.alert:first-of-type{border-top:none;padding-top:2px}
+.dot{flex:0 0 10px;height:10px;border-radius:50%;margin-top:7px;background:var(--sea)}
+.dot.warn{background:var(--warn)}
+.dot.ok{background:var(--ok)}
+.alert p{margin:0}
+.alert strong{display:block}
+.alert span{color:var(--soft);font-size:.95rem}
+
+/* best beach */
+.pick{font-size:1.9rem;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.why{margin:6px 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{font-size:.85rem;padding:5px 10px;border-radius:999px;border:1px solid var(--line);color:var(--soft)}
+.chip b{color:var(--ink)}
+.chips + .alert{border-top:1px solid var(--line);padding-top:12px}
+
+/* cruise crowd meter */
+.crowd-top{display:flex;align-items:baseline;justify-content:space-between;gap:4px 12px;flex-wrap:wrap}
+.crowd-word{font-size:1.9rem;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.crowd-num{color:var(--soft);font-variant-numeric:tabular-nums}
+.meter{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:10px 0 4px}
+.meter i{height:10px;background:var(--line)}
+.meter i:first-child{border-radius:4px 0 0 4px}
+.meter i:last-child{border-radius:0 4px 4px 0}
+.crowd[data-level="1"] .meter i:nth-child(-n+1){background:var(--ok)}
+.crowd[data-level="2"] .meter i:nth-child(-n+2){background:var(--sea)}
+.crowd[data-level="3"] .meter i:nth-child(-n+3){background:var(--sun)}
+.crowd[data-level="4"] .meter i{background:var(--warn)}
+.meter-scale{display:grid;grid-template-columns:repeat(4,1fr);font-size:.75rem;color:var(--soft);text-align:center}
+.wk{display:grid;grid-template-columns:auto 1fr auto;gap:8px 10px;align-items:start;font-variant-numeric:tabular-nums}
+.wk-d{font-weight:700;font-size:.93rem;white-space:nowrap}
+.wk-m{min-width:0;color:var(--soft);font-size:.88rem}
+.wk-bar{display:block;height:10px;min-width:2px;margin:6px 0 2px;border-radius:0 4px 4px 0;background:var(--sea)}
+.wk-n{font-size:.93rem;text-align:right;color:var(--soft)}
+
+/* ferry */
+.fr{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.fr:first-of-type{border-top:none;padding-top:2px}
+.fr strong{display:block}
+.fr span{color:var(--soft);font-size:.95rem}
+.fr-in{font-size:1.25rem;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fine{color:var(--soft);font-size:.85rem;margin:12px 0 0}
+.fine a{color:inherit}
+
+/* week ahead */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-variant-numeric:tabular-nums}
+.wd{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;font-size:.85rem}
+.wd-n{color:var(--soft);font-size:.8rem}
+.wd b{font-size:1.02rem}
+.wd-lo{color:var(--soft)}
+.wd-bar{width:100%;max-width:22px;height:34px;margin-top:4px;border-radius:4px;background:var(--line);display:flex;align-items:flex-end;overflow:hidden}
+.wd-bar i{display:block;width:100%;background:var(--sea);border-radius:4px 4px 0 0}
+.wd-pop{font-size:.78rem;color:var(--soft)}
+
+/* sea and sky */
+.sky{display:flex;align-items:center;gap:14px;padding-bottom:12px}
+.moon{flex:0 0 52px;height:52px}
+.moon svg{display:block;width:100%;height:100%}
+.sky strong{display:block}
+.sky span{color:var(--soft);font-size:.95rem}
+.sky + .alert{border-top:1px solid var(--line);padding-top:12px}
+
+/* events */
+.day{margin-top:14px}
+.day:first-of-type{margin-top:0}
+.dayname{font-weight:700;color:var(--bloom);font-size:.95rem;margin-bottom:4px}
+.ev{padding:8px 0 8px 12px;border-left:3px solid var(--line)}
+.ev a{color:var(--ink);font-weight:700;text-decoration:none}
+.ev a:hover{text-decoration:underline}
+.ev b{color:var(--ink)}
+.ev div{color:var(--soft);font-size:.93rem}
+.beach-list{color:var(--soft);font-size:.95rem}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:6px}
+footer{color:var(--soft);font-size:.85rem;text-align:center;padding:10px 8px 0}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>St. Thomas today</h1>
+    <div class="date">Tuesday, October 13, 2026</div>
+    <div class="stale" id="stale" hidden></div>
+  </header>
+
+  <section class="card storm" id="storm" aria-label="Storm watch" hidden>
+    <h2>Storm watch</h2>
+    <p id="stormText"></p>
+    <ul class="prep">
+      <li>Fill drinking water and check the cistern.</li>
+      <li>Fuel the car and the generator.</li>
+      <li>Charge phones and power banks.</li>
+      <li>Close shutters and bring in loose things outside.</li>
+      <li>Get cash, medicine and a few days of food.</li>
+    </ul>
+    <div class="btns">
+      <a class="btn solid" href="https://www.nhc.noaa.gov/" target="_blank" rel="noopener">Forecast cone</a>
+      <a class="btn" href="https://www.vitema.vi.gov/" target="_blank" rel="noopener">VITEMA alerts</a>
+    </div>
+  </section>
+
+  <section class="card weather" aria-label="Weather">
+    <div class="sunball" aria-hidden="true"></div>
+    <h2>Charlotte Amalie</h2>
+    <div class="temp">87°<small>high today</small></div>
+    <p class="wx-note">Scattered showers this afternoon, east breeze around 10 mph. Tonight low near 77°, with showers and a thunderstorm likely before dawn.</p>
+    <div class="sunrow">
+      <div>Sunrise<b>6:13 am</b></div>
+      <div>Sunset<b>5:59 pm</b></div>
+    </div>
+    <div class="hours" id="hours" hidden>
+      <div class="hours-title">Temperature and rain chance, hour by hour</div>
+      <div class="hours-row" id="hoursRow"></div>
+    </div>
+    <div class="btns">
+      <a class="btn solid" href="https://forecast.weather.gov/MapClick.php?lat=18.3419&lon=-64.9307" target="_blank" rel="noopener">Live forecast</a>
+      <a class="btn" href="https://radar.weather.gov/station/tjua/standard" target="_blank" rel="noopener">Radar</a>
+      <a class="btn" href="https://www.nhc.noaa.gov/" target="_blank" rel="noopener">Tropics</a>
+    </div>
+  </section>
+
+  <section class="card" aria-label="Heads up">
+    <h2>Heads up</h2>
+    <div class="alert"><i class="dot"></i><p><strong>Storms before dawn</strong><span>60% chance of showers and thunderstorms between 3 and 6 am Wednesday.</span></p></div>
+    <div class="alert"><i class="dot warn"></i><p><strong>Severe drought on St. Thomas</strong><span>Still at the highest federal drought level. Go easy on cistern water.</span></p></div>
+    <div class="alert"><i class="dot ok"></i><p><strong>Buses are back</strong><span>VITRAN full fixed-route service resumes today after the holiday.</span></p></div>
+    <div class="alert"><i class="dot"></i><p><strong>Power bills may rise</strong><span>WAPA is asking the PSC for an emergency 3-cent per kWh fuel charge increase.</span></p></div>
+    <div class="alert"><i class="dot ok"></i><p><strong>Tropics are quiet</strong><span>The Hurricane Center expects no tropical development in the next 7 days.</span></p></div>
+  </section>
+
+  <section class="card" aria-label="Best beach today">
+    <h2>Best beach today</h2>
+    <div class="pick">Brewers Bay</div>
+    <p class="why">It faces west, out of today's east wind, so the water stays calm. It passed last week's water test, is usually quieter than Magens or Coki on ship days, and looks straight at the 5:59 sunset.</p>
+    <div class="chips">
+      <span class="chip">Rip currents <b>Low</b></span>
+      <span class="chip">Surf <b>about 3 ft</b></span>
+      <span class="chip">UV index <b>6, high</b></span>
+      <span class="chip">Wind <b>E 10–15 mph</b></span>
+    </div>
+    <div class="alert"><i class="dot warn"></i><p><strong>Skip Frenchman's Bay</strong><span>Failed last week's DPNR water test. New results usually post Friday.</span></p></div>
+    <div class="alert"><i class="dot ok"></i><p><strong>Also passed</strong><span class="beach-list">Magens, Coki, Sapphire, Lindqvist, Secret Harbor, Bolongo, Lindbergh, Hull, Bluebeard's, Vessup, and Honeymoon on Water Island.</span></p></div>
+    <div class="alert"><i class="dot"></i><p><strong>Rougher by Saturday</strong><span>Rip current risk rises to moderate for parts of the USVI this weekend.</span></p></div>
+  </section>
+
+  <section class="card" aria-label="Cruise ships in port">
+    <h2>In port today</h2>
+    <div class="crowd" data-level="4">
+      <div class="crowd-top"><span class="crowd-word">Packed</span><span class="crowd-num">2 ships, room for 9,180 passengers</span></div>
+      <div class="meter" role="img" aria-label="Crowd level 4 of 4: packed"><i></i><i></i><i></i><i></i></div>
+      <div class="meter-scale" aria-hidden="true"><span>Quiet</span><span>Light</span><span>Busy</span><span>Packed</span></div>
+    </div>
+    <p class="why">Expect heavy traffic near the docks and downtown until both ships sail at 6 pm.</p>
+    <div class="ev"><b>Icon of the Seas</b><div>8 am to 6 pm. 5,610 passengers.</div></div>
+    <div class="ev"><b>Norwegian Luna</b><div>10 am to 6 pm. 3,570 passengers.</div></div>
+    <h3>Next 7 days</h3>
+    <div class="wk">
+      <span class="wk-d">Wed 14</span><span class="wk-m"><i class="wk-bar" style="width:15.5%"></i>Disney Treasure, 7 am to 3 pm</span><span class="wk-n">2,500</span>
+      <span class="wk-d">Thu 15</span><span class="wk-m">No ships</span><span class="wk-n"></span>
+      <span class="wk-d">Fri 16</span><span class="wk-m">No ships</span><span class="wk-n"></span>
+      <span class="wk-d">Sat 17</span><span class="wk-m">No ships</span><span class="wk-n"></span>
+      <span class="wk-d">Sun 18</span><span class="wk-m"><i class="wk-bar" style="width:12.4%"></i>Rhapsody of the Seas, 8 am to 5 pm</span><span class="wk-n">1,996</span>
+      <span class="wk-d">Mon 19</span><span class="wk-m">No ships</span><span class="wk-n"></span>
+      <span class="wk-d">Tue 20</span><span class="wk-m"><i class="wk-bar" style="width:100%"></i>Harmony, Adventure, Carnival Vista and Norwegian Luna</span><span class="wk-n">16,097</span>
+    </div>
+    <p class="fine">Passenger numbers are each ship's standard capacity. Schedule from <a href="https://www.cruisemapper.com/ports/Portofino-port-604" target="_blank" rel="noopener">CruiseMapper</a>.</p>
+  </section>
+
+  <section class="card" aria-label="Events">
+    <h2>What's on</h2>
+    <div class="day">
+      <div class="dayname">Today, Tue Oct 13</div>
+      <div class="ev"><a href="https://stthomassource.com/events/st-thomas-st-john-historic-preservation-committee-monthly-meeting-2/" target="_blank" rel="noopener">Historic Preservation Committee meeting</a><div>1 pm. STT–STJ monthly public meeting.</div></div>
+      <div class="ev"><a href="https://stthomassource.com/page/12894/?p=contatti" target="_blank" rel="noopener">Voting machine testing</a><div>5:30 pm. Board of Elections tests machines ahead of early voting.</div></div>
+    </div>
+    <div class="day">
+      <div class="dayname">Fri Oct 16</div>
+      <div class="ev"><a href="https://stthomassource.com/content/2026/10/09/stt-hosts-no-kings-vote-early-rally-on-st-thomas-oct-17/" target="_blank" rel="noopener">Early voting opens</a><div>Runs through Oct 31 on St. Thomas and St. Croix.</div></div>
+    </div>
+    <div class="day">
+      <div class="dayname">Sat Oct 17</div>
+      <div class="ev"><a href="https://www.eventbrite.com/d/united-states--saint-thomas/st-thomas/" target="_blank" rel="noopener">Soul &amp; Spirit Gospel Fest</a><div>Oasis Church of God of Prophecy.</div></div>
+      <div class="ev"><a href="https://stthomassource.com/events/free-financial-literacy-symposium-for-students/" target="_blank" rel="noopener">Free financial literacy symposium for students</a><div>Tap for time and place.</div></div>
+    </div>
+  </section>
+
+  <section class="card" aria-label="Ferry to St. John">
+    <h2>Next ferry to St. John</h2>
+    <div class="fr"><div><strong>Red Hook to Cruz Bay</strong><span id="fa">6:30 and 7:30 am, then hourly 8 am to 10 pm</span></div><b class="fr-in" id="faIn"></b></div>
+    <div class="fr"><div><strong>Cruz Bay to Red Hook</strong><span id="fb">Hourly, 6 am to 10 pm</span></div><b class="fr-in" id="fbIn"></b></div>
+    <p class="fine">About 20 minutes each way. Times from the <a href="https://dpw.vi.gov/ferries/" target="_blank" rel="noopener">VI Public Works timetable</a>. Confirm the last boats before you go.</p>
+  </section>
+
+  <section class="card" aria-label="Week ahead">
+    <h2>The week ahead</h2>
+    <div class="week">
+      <div class="wd"><span class="wd-n">Today</span><b>87°</b><span class="wd-lo">77°</span><span class="wd-bar" title="60% chance of rain"><i style="height:60%"></i></span><span class="wd-pop">60%</span></div>
+      <div class="wd"><span class="wd-n">Wed</span><b>87°</b><span class="wd-lo">78°</span><span class="wd-bar" title="50% chance of rain"><i style="height:50%"></i></span><span class="wd-pop">50%</span></div>
+      <div class="wd"><span class="wd-n">Thu</span><b>87°</b><span class="wd-lo">77°</span><span class="wd-bar" title="40% chance of rain"><i style="height:40%"></i></span><span class="wd-pop">40%</span></div>
+      <div class="wd"><span class="wd-n">Fri</span><b>88°</b><span class="wd-lo">77°</span><span class="wd-bar" title="30% chance of rain"><i style="height:30%"></i></span><span class="wd-pop">30%</span></div>
+      <div class="wd"><span class="wd-n">Sat</span><b>88°</b><span class="wd-lo">77°</span><span class="wd-bar" title="40% chance of rain"><i style="height:40%"></i></span><span class="wd-pop">40%</span></div>
+      <div class="wd"><span class="wd-n">Sun</span><b>88°</b><span class="wd-lo">77°</span><span class="wd-bar" title="30% chance of rain"><i style="height:30%"></i></span><span class="wd-pop">30%</span></div>
+      <div class="wd"><span class="wd-n">Mon</span><b>88°</b><span class="wd-lo">79°</span><span class="wd-bar" title="30% chance of rain"><i style="height:30%"></i></span><span class="wd-pop">30%</span></div>
+    </div>
+    <p class="fine">High, overnight low, and the highest rain chance of the day or night. National Weather Service forecast.</p>
+  </section>
+
+  <section class="card" aria-label="Sea and sky">
+    <h2>Sea and sky</h2>
+    <div class="sky">
+      <div class="moon" id="moon" aria-hidden="true"></div>
+      <div><strong id="moonName">Tonight's moon</strong><span id="moonNote">Waxing crescent.</span></div>
+    </div>
+    <div class="alert"><i class="dot"></i><p><strong>Tides at Charlotte Amalie</strong><span id="tideText">High at 11:11 am (1.1 ft). Low at 2:22 am Wednesday (0.2 ft).</span></p></div>
+    <div class="alert"><i class="dot"></i><p><strong>Orionid meteors</strong><span>The shower peaks around Oct 21. Best after midnight, away from town lights.</span></p></div>
+  </section>
+
+  <section class="card" aria-label="Coming up">
+    <h2>Coming up</h2>
+    <div class="ev"><a href="https://www.eventbrite.com/d/united-states--saint-thomas/st-thomas/" target="_blank" rel="noopener">Socaween 2026: Chapter X</a><div>Sat Oct 24 at Muse. Adults' Halloween soca night.</div></div>
+    <div class="ev"><a href="https://stthomassource.com/events/" target="_blank" rel="noopener">Full island calendar</a><div>Everything else on the St. Thomas Source events page.</div></div>
+  </section>
+
+  <footer>Updated Tue Oct 13 afternoon · Sources: NWS, National Hurricane Center, NOAA tides, EPA UV index, CruiseMapper, VI Public Works, Weather Underground, St. Thomas Source, VI Consortium, DPNR</footer>
+</div>
+
+<!-- Daily data, replaced every morning. Times are St. Thomas local (AST).
+     hourly: [hour, temperature F, rain chance %]   tides: [time, H or L, feet] -->
+<script type="application/json" id="dayData">
+{"hourly":[
+["2026-10-13T15",86,30],["2026-10-13T16",84,30],["2026-10-13T17",82,30],["2026-10-13T18",81,20],["2026-10-13T19",80,20],["2026-10-13T20",80,20],
+["2026-10-13T21",79,10],["2026-10-13T22",79,10],["2026-10-13T23",79,10],["2026-10-14T00",78,20],["2026-10-14T01",78,20],["2026-10-14T02",78,20],
+["2026-10-14T03",77,60],["2026-10-14T04",77,60],["2026-10-14T05",77,60],["2026-10-14T06",79,20],["2026-10-14T07",81,20],["2026-10-14T08",83,20],
+["2026-10-14T09",84,10],["2026-10-14T10",85,10],["2026-10-14T11",86,10],["2026-10-14T12",87,30],["2026-10-14T13",87,30],["2026-10-14T14",87,30],
+["2026-10-14T15",86,40],["2026-10-14T16",84,40],["2026-10-14T17",83,40],["2026-10-14T18",82,50],["2026-10-14T19",81,50],["2026-10-14T20",81,50],
+["2026-10-14T21",80,20],["2026-10-14T22",80,20],["2026-10-14T23",80,20],["2026-10-15T00",79,30],["2026-10-15T01",79,30],["2026-10-15T02",79,30]],
+"tides":[
+["2026-10-13T11:11","H",1.1],["2026-10-14T02:22","L",0.2],["2026-10-14T12:02","H",1.0],["2026-10-15T02:53","L",0.2],["2026-10-15T13:03","H",1.0]]}
+</script>
+
+<script>
+/* stale-snapshot banner */
+(function(){
+  var updated=new Date(2026,9,13);
+  var now=new Date(); now.setHours(0,0,0,0);
+  var days=Math.round((now-updated)/86400000);
+  if(days>=1){var el=document.getElementById('stale');
+    el.textContent='Heads up: this snapshot is from Tue Oct 13 ('+days+(days===1?' day':' days')+' ago). Tap Live forecast for current weather.';
+    el.hidden=false;}
+})();
+
+/* hour-by-hour strip, tides, moon and ferry countdown. All clocks run on St. Thomas time (UTC-4, no daylight saving). */
+(function(){
+  var DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  function ast(){return new Date(Date.now()-4*3600000)}
+  function clock(h,m){return (h%12||12)+(m?':'+(m<10?'0':'')+m:'')+(h<12?' am':' pm')}
+  var data={};
+  try{data=JSON.parse(document.getElementById('dayData').textContent)}catch(e){}
+
+  function hours(){
+    var list=data.hourly||[],key=ast().toISOString().slice(0,13),start=-1;
+    for(var i=0;i<list.length;i++){if(list[i][0]>=key){start=i;break}}
+    if(start<0)return;
+    var row=document.getElementById('hoursRow');row.textContent='';
+    list.slice(start,start+8).forEach(function(h){
+      var hr=+h[0].slice(11,13),label=h[0]===key?'Now':clock(hr,0);
+      var d=document.createElement('div');d.className='hr';d.title=clock(hr,0)+': '+h[1]+'°, '+h[2]+'% chance of rain';
+      d.innerHTML='<span>'+label+'</span><span class="hr-temp">'+h[1]+'°</span><span class="hr-bar"><i style="height:'+Math.max(0,Math.min(100,h[2]))+'%"></i></span><span>'+h[2]+'%</span>';
+      row.appendChild(d);
+    });
+    document.getElementById('hours').hidden=false;
+  }
+
+  function tides(){
+    var now=ast().toISOString(),today=now.slice(0,10),next=(data.tides||[]).filter(function(t){return t[0]>now.slice(0,16)}).slice(0,2);
+    if(!next.length)return;
+    var text=next.map(function(t,i){
+      var day=t[0].slice(0,10)===today?'':' '+DAYS[new Date(t[0].slice(0,10)+'T12:00:00Z').getUTCDay()];
+      var word=t[1]==='H'?'high':'low';
+      return (i?'then '+word:'Next '+word)+' at '+clock(+t[0].slice(11,13),+t[0].slice(14,16))+day+' ('+t[2].toFixed(1)+' ft)';
+    }).join(', ')+'.';
+    document.getElementById('tideText').textContent=text;
+  }
+
+  function moon(){
+    var syn=29.530588853,p=((Date.now()-Date.UTC(2026,9,10,15,50))/86400000/syn)%1;if(p<0)p+=1;
+    var lit=Math.round((1-Math.cos(2*Math.PI*p))/2*100);
+    var names=[[.03,'New moon'],[.22,'Waxing crescent'],[.28,'First quarter'],[.47,'Waxing gibbous'],[.53,'Full moon'],[.72,'Waning gibbous'],[.78,'Last quarter'],[.97,'Waning crescent'],[1.01,'New moon']];
+    var name=names.filter(function(n){return p<n[0]})[0][1];
+    var q=Math.floor(p*4)+1,days=Math.max(1,Math.round((q/4-p)*syn)),nextName=['First quarter','Full moon','Last quarter','New moon'][q-1];
+    var r=24,k=Math.cos(2*Math.PI*p),rx=(r*Math.abs(k)).toFixed(1);
+    var shape='<path d="M0 -'+r+'A'+r+' '+r+' 0 0 1 0 '+r+'A'+rx+' '+r+' 0 0 '+(k>0?0:1)+' 0 -'+r+'Z" fill="var(--sun)"'+(p>.5?' transform="scale(-1 1)"':'')+'/>';
+    document.getElementById('moon').innerHTML='<svg viewBox="-26 -26 52 52"><circle r="'+r+'" fill="var(--line)"/>'+shape+'</svg>';
+    document.getElementById('moonName').textContent=name;
+    document.getElementById('moonNote').textContent=lit+'% lit. '+nextName+' in about '+days+(days===1?' day.':' days.');
+  }
+
+  /* Red Hook: 5:30 am on weekdays, 6:30, 7:30, then hourly 8 am to 10 pm. Cruz Bay: hourly 6 am to 10 pm. */
+  function sailings(fromRedHook,dow){
+    var t=[],h;
+    if(fromRedHook){if(dow>0&&dow<6)t.push(330);t.push(390,450);for(h=8;h<=22;h++)t.push(h*60)}
+    else{for(h=6;h<=22;h++)t.push(h*60)}
+    return t;
+  }
+  function ferry(){
+    var n=ast(),mins=n.getUTCHours()*60+n.getUTCMinutes(),dow=n.getUTCDay();
+    [['fa',true],['fb',false]].forEach(function(f){
+      var next=sailings(f[1],dow).filter(function(m){return m>=mins})[0],line=document.getElementById(f[0]),badge=document.getElementById(f[0]+'In');
+      if(next==null){
+        var first=sailings(f[1],(dow+1)%7)[0];
+        line.textContent='No more boats tonight. First boat '+clock(Math.floor(first/60),first%60)+'.';badge.textContent='';return;
+      }
+      var wait=next-mins;
+      line.textContent='Leaves at '+clock(Math.floor(next/60),next%60);
+      badge.textContent=wait<1?'now':wait<60?'in '+wait+' min':'in '+Math.floor(wait/60)+' hr'+(wait%60?' '+wait%60+' min':'');
+    });
+  }
+
+  hours();tides();moon();ferry();
+  setInterval(ferry,30000);
+  setInterval(function(){hours();tides()},300000);
+})();
+</script>
+</body>
+</html>

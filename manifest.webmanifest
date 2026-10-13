@@ -1,0 +1,14 @@
+{
+  "name": "St. Thomas Today",
+  "short_name": "St. Thomas",
+  "description": "Today on St. Thomas: weather, beach pick, cruise crowds, ferries and events.",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#E6F1EE",
+  "theme_color": "#0F5E73",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

@@ -53,6 +53,7 @@ h2{font-size:1.2rem;margin:0 0 10px;font-weight:700}
 h3{font-size:.95rem;margin:16px 0 8px;font-weight:700;color:var(--bloom)}
 
 header{padding:8px 4px 18px}
+.hello{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:1.15rem;font-weight:700;color:var(--bloom);margin-bottom:4px}
 .date{color:var(--soft);margin-top:6px}
 .stale{margin-top:10px;background:var(--card);border:1px solid var(--bloom);color:var(--ink);border-radius:12px;padding:10px 12px;font-size:.93rem}
 
@@ -163,6 +164,7 @@ footer a{color:inherit}
 <body>
 <div class="wrap">
   <header>
+    <div class="hello" id="hello" hidden></div>
     <h1>St. Thomas today</h1>
     <div class="date">Tuesday, October 13, 2026</div>
     <div class="stale" id="stale" hidden></div>
@@ -471,8 +473,15 @@ footer a{color:inherit}
     });
   }
 
-  hours();tides();moon();ferry();
-  setInterval(ferry,30000);
+  /* greeting follows the clock on the device: morning until noon, afternoon until 6 pm, night after that */
+  function hello(){
+    var h=new Date().getHours(),el=document.getElementById('hello');
+    el.textContent=h>=5&&h<12?'Good morning':h>=12&&h<18?'Good afternoon':'Good night';
+    el.hidden=false;
+  }
+
+  hello();hours();tides();moon();ferry();
+  setInterval(function(){ferry();hello()},30000);
   setInterval(function(){hours();tides()},300000);
 })();
 </script>

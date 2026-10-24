@@ -110,7 +110,7 @@ header{padding:8px 4px 18px}
 .meter i:last-child{border-radius:0 4px 4px 0}
 .crowd[data-level="1"] .meter i:nth-child(-n+1){background:var(--ok)}
 .crowd[data-level="2"] .meter i:nth-child(-n+2){background:var(--sea)}
-.crowd[data-level="1"] .meter i:nth-child(-n+3){background:var(--sun)}
+.crowd[data-level="3"] .meter i:nth-child(-n+3){background:var(--sun)}
 .crowd[data-level="4"] .meter i{background:var(--warn)}
 .meter-scale{display:grid;grid-template-columns:repeat(4,1fr);font-size:.75rem;color:var(--soft);text-align:center}
 .wk{display:grid;grid-template-columns:auto 1fr auto;gap:8px 10px;align-items:start;font-variant-numeric:tabular-nums}
@@ -304,7 +304,7 @@ footer a{color:inherit}
 
   <section class="card" aria-label="Cruise ships in port">
     <h2>In port today</h2>
-    <div class="crowd" data-level="3">
+    <div class="crowd" data-level="1">
       <div class="crowd-top"><span class="crowd-word">Quiet</span><span class="crowd-num">No ships in port</span></div>
       <div class="meter" role="img" aria-label="Crowd level 1 of 4: quiet"><i></i><i></i><i></i><i></i></div>
       <div class="meter-scale" aria-hidden="true"><span>Quiet</span><span>Light</span><span>Busy</span><span>Packed</span></div>

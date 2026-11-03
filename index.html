@@ -109,7 +109,7 @@ header{padding:8px 4px 18px}
 .meter i:first-child{border-radius:4px 0 0 4px}
 .meter i:last-child{border-radius:0 4px 4px 0}
 .crowd[data-level="1"] .meter i:nth-child(-n+1){background:var(--ok)}
-.crowd[data-level="2"] .meter i:nth-child(-n+2){background:var(--sea)}
+.crowd[data-level="3"] .meter i:nth-child(-n+2){background:var(--sea)}
 .crowd[data-level="3"] .meter i:nth-child(-n+3){background:var(--sun)}
 .crowd[data-level="4"] .meter i{background:var(--warn)}
 .meter-scale{display:grid;grid-template-columns:repeat(4,1fr);font-size:.75rem;color:var(--soft);text-align:center}
@@ -166,7 +166,7 @@ footer a{color:inherit}
   <header>
     <div class="hello" id="hello" hidden></div>
     <h1>St. Thomas today</h1>
-    <div class="date">Monday, November 2, 2026</div>
+    <div class="date">Tuesday, November 3, 2026</div>
     <div class="stale" id="stale" hidden></div>
   </header>
 
@@ -190,9 +190,9 @@ footer a{color:inherit}
     <div class="sunball" aria-hidden="true"></div>
     <h2>Charlotte Amalie</h2>
     <div class="temp">88°<small>high today</small></div>
-    <p class="wx-note">Partly sunny with scattered showers. East southeast wind around 18 mph. Tonight low near 76° with a 30% chance of showers.</p>
+    <p class="wx-note">Mostly sunny with scattered showers, then a few thunderstorms later. East southeast wind around 16 mph. Tonight low near 75° with a 50% chance of showers.</p>
     <div class="sunrow">
-      <div>Sunrise<b>6:19 am</b></div>
+      <div>Sunrise<b>6:20 am</b></div>
       <div>Sunset<b>5:47 pm</b></div>
     </div>
     <div class="hours" id="hours" hidden>
@@ -208,97 +208,116 @@ footer a{color:inherit}
 
   <section class="card" aria-label="Heads up">
     <h2>Heads up</h2>
-    <div class="alert"><i class="dot warn"></i><p><strong>Scattered showers all week</strong><span>Showers are likely on and off today (40%), and chances stay near 50% Tuesday through Thursday. Pack a rain jacket for outings.</span></p></div>
-    <div class="alert"><i class="dot warn"></i><p><strong>Moderate rip currents</strong><span>Surf is around 4 feet through Wednesday, with east winds near 20 mph today. Stay near a lifeguard or stick to sheltered bays. Surf eases to about 3 feet Thursday.</span></p></div>
-    <div class="alert"><i class="dot warn"></i><p><strong>Hot and strong sun</strong><span>The latest EPA UV reading is 8, very high, and the Weather Service says heat index values could reach advisory levels at times. Sunscreen, shade and water.</span></p></div>
-    <div class="alert"><i class="dot"></i><p><strong>Election Day is tomorrow, Tue Nov 3</strong><span>Check <a href="https://vivote.gov/" target="_blank" rel="noopener">the Elections System</a> for your polling place and hours.</span></p></div>
-    <div class="alert"><i class="dot"></i><p><strong>Light ship day, big ones ahead</strong><span>One ship is in port today. Wednesday (two ships) and Thursday (three ships) are the big ones.</span></p></div>
-    <div class="alert"><i class="dot ok"></i><p><strong>Tropics are quiet for us</strong><span>The Hurricane Center expects no tropical cyclone formation in the next 7 days.</span></p></div>
+    <div class="alert"><i class="dot warn"></i><p><strong>Heat advisory 9 am to 2 pm</strong><span>Hot and humid today, and the EPA UV reading is 9, very high. Sunscreen, shade and water, and go easy on midday outings. Showers and a few thunderstorms build later.</span></p></div>
+    <div class="alert"><i class="dot"></i><p><strong>Election Day is today, Tue Nov 3</strong><span>Polls are listed as open 7 am to 7 pm. Check <a href="https://vivote.gov/" target="_blank" rel="noopener">the Elections System</a> for your polling place. A gubernatorial runoff is listed for Nov 17.</span></p></div>
+    <div class="alert"><i class="dot warn"></i><p><strong>Wetter Thursday to Saturday, bigger surf Friday</strong><span>Slow showers could bring ponding and some flooding Thursday to Saturday. A north swell arrives Friday into the weekend, with a moderate rip current risk on the north side.</span></p></div>
+    <div class="alert"><i class="dot"></i><p><strong>Busy ship day, big ones ahead</strong><span>Norwegian Luna is in port today. Wednesday (two ships) and Thursday (three ships) are the big ones.</span></p></div>
+    <div class="alert"><i class="dot ok"></i><p><strong>Tropics are quiet for us</strong><span>A low east of Florida could turn subtropical late this week, but it is far from the Virgin Islands and moves away by the weekend.</span></p></div>
   </section>
 
   <section class="card" aria-label="Events">
     <h2>What's on</h2>
     <div class="day">
-      <div class="dayname">Today, Mon Nov 2</div>
-      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Open mic at KAM Experience</a><div>7 pm, Charlotte Amalie. Every Monday.</div></div>
-      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Tim West Band</a><div>7 to 9 pm at Margaritaville's Six Strings Stage. Every Monday.</div></div>
-      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Monday in St. John (St. John)</a><div>IKEMA steel pan at The Windmill Bar 11:30 am to 2:30 pm, Mark at the Upstairs Bar 7 to 9 pm.</div></div>
-    </div>
-    <div class="day">
-      <div class="dayname">Tue Nov 3</div>
+      <div class="dayname">Today, Tue Nov 3</div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Rock the Open Mic with Tim West</a><div>6 to 9 pm at Castle Grill, Bluebeard's Castle. Every Tuesday.</div></div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Eva and Mark</a><div>6 to 9 pm at Salt Shack, Frenchman's Reef. Every Tuesday.</div></div>
+      <div class="ev"><a href="https://www.stthomasvisitorsguide.com/events-calendar" target="_blank" rel="noopener">Bingo at The Shack</a><div>5 to 9 pm at The Shack at Hull Bay.</div></div>
+      <div class="ev"><a href="https://www.stthomasvisitorsguide.com/events-calendar" target="_blank" rel="noopener">Toddler Tuesdays</a><div>10:30 to 11:15 am at the VI Children's Museum. For the little ones.</div></div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Open mic with Accordion Rob (St. John)</a><div>5 to 8 pm at Johnny Lime, Oasis. Every Tuesday.</div></div>
     </div>
     <div class="day">
       <div class="dayname">Wed Nov 4</div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Chris Kollin</a><div>5:30 to 8:30 pm at The Shack at Hull Bay.</div></div>
+      <div class="ev"><a href="https://www.stthomasvisitorsguide.com/events-calendar" target="_blank" rel="noopener">Lobster Lunacy</a><div>6 pm until it's gone at Duffy's Love Shack.</div></div>
+      <div class="ev"><a href="https://www.stthomasvisitorsguide.com/events-calendar" target="_blank" rel="noopener">Live music at Iggies</a><div>7 to 10 pm at Iggies Beach Bar, Bolongo Bay. Also Thursday.</div></div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Bo &amp; Charlie Jam (St. John)</a><div>6 to 8:30 pm at Sun Dog Cafe, Mongoose Junction. Every Wednesday.</div></div>
     </div>
     <div class="day">
       <div class="dayname">Thu Nov 5</div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Top Notch Band</a><div>7 to 9 pm at Margaritaville's Six Strings Stage. Reggae and soca. Every Thursday.</div></div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Piano with Freddie Rabuse</a><div>6 to 8 pm at Prime at Paradise Point. Reservations advised, (340) 690-2191. Every Thursday.</div></div>
-      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Thursday in St. John (St. John)</a><div>Housewives of St. John at the Beach Bar 7 to 10 pm, live music with a Caribbean buffet at Shorebird, Westin St. John, 5:30 pm.</div></div>
+      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Housewives of St. John (St. John)</a><div>7 to 10 pm at the Beach Bar. Live music with a Caribbean buffet at Shorebird, Westin St. John, from 5:30 pm.</div></div>
     </div>
     <div class="day">
       <div class="dayname">Fri Nov 6</div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Dia De Los Muertos Alley Jam</a><div>6 pm at Greengo's, Charlotte Amalie. David Electric of Steel Pulse, Jon Gazi and DJ JonQuan.</div></div>
+      <div class="ev"><a href="https://www.stthomasvisitorsguide.com/events-calendar" target="_blank" rel="noopener">First Friday</a><div>Downtown at Taphus and the Waterfront. No 2026 time listed, past editions ran about 5:30 to 10:30 pm.</div></div>
+      <div class="ev"><a href="https://viconsortium.com/vi-tourism/virgin-islands-food---whine-fest-to-bring-comedian-from-kevin-hart-s-netflix-series--en-blanc-white-affair-and-day-sail-to-st--thomas" target="_blank" rel="noopener">Vibes on the Rock: comedy show</a><div>ChattahboxVI show with Eva Evans from Netflix's Funny AF. Time and venue not listed yet.</div></div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Drew Rock VI</a><div>8 to 11 pm at Iggies Beach Bar, Bolongo Bay. Rock, blues, reggae and covers.</div></div>
-      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Friday regulars</a><div>Live music at Smoke Up VI, Crown Bay 5 to 8, Freddie Rabuse piano at Prime 6 to 8, steel pan at Stone House Cafe 6 to 9, RoxNonStop Duo at Sib's 6 to 9 (most Fridays), Eva and Mark at Coconut Cove 6 to 9, open mic at The Vibery 7, Anna Tucker-Taylor at Buddha Sushi Lounge 7 to 9, Topp Notch Band at The Smoking Rooster 7 to 10, X-Static Band at Virgin Haven 8 to 11. The Funky Iguanas at Tillett Gardens are listed only for 2nd to 4th Fridays, so probably off this week.</div></div>
+      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Friday regulars</a><div>Funky Iguanas at Tillett Gardens 5 to 8, Freddie Rabuse piano at Prime 6 to 8, steel pan at Stone House Cafe 6 to 9, RoxNonStop Duo at Sib's 6 to 9 (most Fridays), Eva and Mark at Coconut Cove 6 to 9, open mic at The Vibery 7, Topp Notch Band at The Smoking Rooster 7 to 10, X-Static Band at Virgin Haven 8 to 11. Family movie night at The Shack 6:30.</div></div>
     </div>
     <div class="day">
       <div class="dayname">Sat Nov 7</div>
       <div class="ev"><a href="https://stthomassource.com/events/fifth-annual-tunes-tacos-throwdown-returns/" target="_blank" rel="noopener">Tunes &amp; Tacos ThrowDown</a><div>Noon to 5 pm at Magens Bay. Free taco-tasting contest with Deltaphonic headlining, a fundraiser for Nana Baby Children's Home.</div></div>
+      <div class="ev"><a href="https://viconsortium.com/vi-tourism/virgin-islands-food---whine-fest-to-bring-comedian-from-kevin-hart-s-netflix-series--en-blanc-white-affair-and-day-sail-to-st--thomas" target="_blank" rel="noopener">Bacchanal en Blanc</a><div>Vibes on the Rock all-inclusive white affair with food, drinks and music. Time and venue not listed yet.</div></div>
+      <div class="ev"><a href="https://www.stthomasvisitorsguide.com/events-calendar" target="_blank" rel="noopener">Saturday Market</a><div>6 am to noon at Market Square.</div></div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Saturday regulars</a><div>Every Saturday: Freddie Rabuse piano at Prime 6 to 8, steel pan at Sib's 6 to 9, Pam Love's Saxy Saturday at The Vibery 7 to 10.</div></div>
     </div>
     <div class="day">
       <div class="dayname">Sun Nov 8</div>
+      <div class="ev"><a href="https://www.stthomasvisitorsguide.com/events-calendar" target="_blank" rel="noopener">Sapphire Sunday</a><div>3 to 6 pm at Sapphire Beach Bar. Live music, food and cocktails. Every Sunday.</div></div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">David Electric at Castle Grill</a><div>1 to 4 pm at Bluebeard's Castle. The Steel Pulse singer plays a Sunday afternoon set.</div></div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Whine Down Sunday</a><div>7 to 11 pm jam band at Virgin's Haven, Havensight. $10. Every Sunday.</div></div>
-      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Sunday in St. John (St. John)</a><div>Cuppa Joe guitar brunch at Sun Dog Cafe 11:30 am to 1:30 pm, steel pan at The Windmill Bar 6 to 8 pm.</div></div>
+      <div class="ev"><a href="https://www.stthomasvisitorsguide.com/events-calendar" target="_blank" rel="noopener">Karaoke at Iggies</a><div>7 to 10 pm at Iggies Beach Bar, Bolongo Bay.</div></div>
+      <div class="ev"><a href="https://viconsortium.com/vi-tourism/virgin-islands-food---whine-fest-to-bring-comedian-from-kevin-hart-s-netflix-series--en-blanc-white-affair-and-day-sail-to-st--thomas" target="_blank" rel="noopener">Vibes on the Rock: day sail</a><div>Day Sail &amp; Island Vibes on the water. Time and details not listed yet.</div></div>
+    </div>
+    <div class="day">
+      <div class="dayname">Mon Nov 9</div>
+      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Open mic at KAM Experience</a><div>7 pm, Charlotte Amalie, next to Moe's on the Waterfront. Every Monday.</div></div>
+      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Tim West Band</a><div>7 to 9 pm at Margaritaville's Six Strings Stage. Every Monday.</div></div>
+      <div class="ev"><a href="https://www.stthomasvisitorsguide.com/events-calendar" target="_blank" rel="noopener">Loteria Mondays</a><div>6 to 8 pm at Rock City Tacos.</div></div>
     </div>
     <p class="fine">Times come from venues and can change, so check before you go.</p>
   </section>
-  <section class="card" id="season" aria-label="Seasonal events" hidden>
+  <section class="card" id="season" aria-label="Thanksgiving week">
+    <h2>Thanksgiving week</h2>
+    <div class="day">
+      <div class="dayname">Sun Nov 15</div>
+      <div class="ev"><a href="https://stthomassource.com/events/hebrew-congregation-of-st-thomas-fundraiser/" target="_blank" rel="noopener">Bingo at the Beach</a><div>Noon to 4 pm. Games and refreshments, a fundraiser for the Hebrew Congregation of St. Thomas. Place not listed.</div></div>
+    </div>
+    <div class="day">
+      <div class="dayname">Fri Nov 20 to Sat Nov 28</div>
+      <div class="ev"><a href="https://www.visitusvi.com/events/" target="_blank" rel="noopener">Paradise Jam basketball</a><div>Tournament runs Nov 20 to 28 on St. Thomas, per the VisitUSVI events listing.</div></div>
+    </div>
+    <p class="fine">Thanksgiving is Thu Nov 26. No Thanksgiving Day events are confirmed yet, so check the full island calendar.</p>
   </section>
 
 
   <section class="card" aria-label="Best beach today">
     <h2>Best beach today</h2>
-    <div class="pick">Brewers Bay</div>
-    <p class="why">It faces west, so it stays out of the east wind and most of the 4-foot surf, and it passed the latest water test. Only one ship is in port, so there is plenty of room.</p>
+    <div class="pick">Lindbergh Bay</div>
+    <p class="why">It faces south, away from the 4-foot north-side surf, and it passed the latest water test. With a ship in port, it also keeps you away from the busy excursion beaches.</p>
     <div class="chips">
       <span class="chip">Rip currents <b>Moderate</b></span>
       <span class="chip">Surf <b>around 4 ft</b></span>
-      <span class="chip">UV index <b>8, very high (latest)</b></span>
-      <span class="chip">Wind <b>E around 20 mph</b></span>
+      <span class="chip">UV index <b>9, very high (latest)</b></span>
+      <span class="chip">Wind <b>E around 15 mph</b></span>
     </div>
-    <div class="alert"><i class="dot warn"></i><p><strong>Skip these</strong><span>Bolongo, Coki Point, Frenchman's Bay, Secret Harbor and Vessup Bay failed the DPNR bacteria test for Oct 26 to 30 (Honeymoon on Water Island too).</span></p></div>
-    <div class="alert"><i class="dot ok"></i><p><strong>Also passed</strong><span class="beach-list">Lindbergh, Lindqvist, Hull Bay, Magens, Sapphire and Bluebeard's. Water Bay was not sampled.</span></p></div>
-    <div class="alert"><i class="dot warn"></i><p><strong>Rough through Wednesday</strong><span>Surf stays near 4 feet with a moderate rip current risk through Wednesday, and east winds near 20 mph today. It eases to about 3 feet on Thursday and Friday.</span></p></div>
+    <div class="alert"><i class="dot warn"></i><p><strong>Skip these</strong><span>Bolongo, Coki Point, Secret Harbor and Vessup Bay failed the DPNR bacteria test for Oct 26 to 30 (Honeymoon on Water Island too).</span></p></div>
+    <div class="alert"><i class="dot ok"></i><p><strong>Also passed</strong><span class="beach-list">Brewers, Lindqvist, Hull Bay, Magens, Sapphire and Bluebeard's. Water Bay was not sampled.</span></p></div>
+    <div class="alert"><i class="dot warn"></i><p><strong>Surf eases, then returns</strong><span>Surf stays near 4 feet with a moderate rip current risk through Wednesday, then drops to about 3 feet Thursday. A north swell arrives Friday into the weekend and brings the rip current risk back on the north side.</span></p></div>
   </section>
 
   <section class="card" aria-label="Cruise ships in port">
     <h2>In port today</h2>
     <div class="crowd" data-level="2">
-      <div class="crowd-top"><span class="crowd-word">Light</span><span class="crowd-num">1 ship, room for 1,996 passengers</span></div>
-      <div class="meter" role="img" aria-label="Crowd level 2 of 4: light"><i></i><i></i><i></i><i></i></div>
+      <div class="crowd-top"><span class="crowd-word">Busy</span><span class="crowd-num">1 ship, room for 3,570 passengers</span></div>
+      <div class="meter" role="img" aria-label="Crowd level 3 of 4: busy"><i></i><i></i><i></i><i></i></div>
       <div class="meter-scale" aria-hidden="true"><span>Quiet</span><span>Light</span><span>Busy</span><span>Packed</span></div>
     </div>
-    <p class="why">One mid-size ship, so downtown and Havensight will be busy but manageable. It leaves by 5 pm, so evenings are easy.</p>
-    <div class="ev"><b>Vision of the Seas</b><div>8 am to 5 pm, room for 1,996.</div></div>
+    <p class="why">One big ship, just over the busy line. Downtown and Havensight will be crowded midday, and it leaves at 6 pm, so evenings are easy.</p>
+    <div class="ev"><b>Norwegian Luna</b><div>10 am to 6 pm, room for 3,570.</div></div>
     <h3>Next 7 days</h3>
     <div class="wk">
-      <span class="wk-d">Tue Nov 3</span><span class="wk-m"><i class="wk-bar" style="width:36.0%"></i>Norwegian Luna, 10 am to 6 pm</span><span class="wk-n">3,570</span>
-      <span class="wk-d">Wed 4</span><span class="wk-m"><i class="wk-bar" style="width:87.8%"></i>Norwegian Prima, 11 am to 7 pm, and Star of the Seas, 12:30 to 8 pm</span><span class="wk-n">8,709</span>
+      <span class="wk-d">Wed Nov 4</span><span class="wk-m"><i class="wk-bar" style="width:87.8%"></i>Norwegian Prima, 11 am to 7 pm, and Star of the Seas, 12:30 to 8 pm</span><span class="wk-n">8,709</span>
       <span class="wk-d">Thu 5</span><span class="wk-m"><i class="wk-bar" style="width:100.0%"></i>Carnival Magic, 7 am to 4 pm, Carnival Pride, 9 am to 6 pm, and Carnival Venezia, 7 am to 4 pm</span><span class="wk-n">9,914</span>
       <span class="wk-d">Fri 6</span><span class="wk-m">No ships</span><span class="wk-n"></span>
       <span class="wk-d">Sat 7</span><span class="wk-m"><i class="wk-bar" style="width:9.4%"></i>Viking Sea, times not listed</span><span class="wk-n">930</span>
       <span class="wk-d">Sun 8</span><span class="wk-m"><i class="wk-bar" style="width:46.1%"></i>Crystal Symphony, 8 am to 6 pm, Rhapsody of the Seas, 8 am to 5 pm, and Zuiderdam, 8 am to 4 pm</span><span class="wk-n">4,566</span>
       <span class="wk-d">Mon 9</span><span class="wk-m"><i class="wk-bar" style="width:20.1%"></i>Vision of the Seas, 8 am to 5 pm</span><span class="wk-n">1,996</span>
+      <span class="wk-d">Tue 10</span><span class="wk-m"><i class="wk-bar" style="width:29.4%"></i>Celebrity Apex, 11:30 am to 7 pm</span><span class="wk-n">2,910</span>
     </div>
-    <p class="fine">Passenger numbers are each ship's standard capacity. Schedule from <a href="https://www.cruisetimetables.com/st-thomas-us-virgin-islands-cruise-ship-schedule-2026.html" target="_blank" rel="noopener">Cruise Timetables</a>. CruiseMapper was unavailable today, so the schedule is from Cruise Timetables alone.</p>
+    <p class="fine">Passenger numbers are each ship's standard capacity. Schedule from <a href="https://www.cruisetimetables.com/st-thomas-us-virgin-islands-cruise-ship-schedule-2026.html" target="_blank" rel="noopener">Cruise Timetables</a>. CruiseMapper was not checked today, so the schedule is from Cruise Timetables alone.</p>
   </section>
 
   <section class="card" aria-label="Ferry to St. John">
@@ -311,13 +330,13 @@ footer a{color:inherit}
   <section class="card" aria-label="Week ahead">
     <h2>The week ahead</h2>
     <div class="week">
-      <div class="wd"><span class="wd-n">Today</span><b>88°</b><span class="wd-lo">76°</span><span class="wd-bar" title="40% chance of rain"><i style="height:40%"></i></span><span class="wd-pop">40%</span></div>
-      <div class="wd"><span class="wd-n">Tue</span><b>87°</b><span class="wd-lo">75°</span><span class="wd-bar" title="50% chance of rain"><i style="height:50%"></i></span><span class="wd-pop">50%</span></div>
+      <div class="wd"><span class="wd-n">Today</span><b>88°</b><span class="wd-lo">75°</span><span class="wd-bar" title="50% chance of rain"><i style="height:50%"></i></span><span class="wd-pop">50%</span></div>
       <div class="wd"><span class="wd-n">Wed</span><b>87°</b><span class="wd-lo">75°</span><span class="wd-bar" title="50% chance of rain"><i style="height:50%"></i></span><span class="wd-pop">50%</span></div>
-      <div class="wd"><span class="wd-n">Thu</span><b>86°</b><span class="wd-lo">74°</span><span class="wd-bar" title="50% chance of rain"><i style="height:50%"></i></span><span class="wd-pop">50%</span></div>
-      <div class="wd"><span class="wd-n">Fri</span><b>86°</b><span class="wd-lo">75°</span><span class="wd-bar" title="30% chance of rain"><i style="height:30%"></i></span><span class="wd-pop">30%</span></div>
-      <div class="wd"><span class="wd-n">Sat</span><b>87°</b><span class="wd-lo">76°</span><span class="wd-bar" title="40% chance of rain"><i style="height:40%"></i></span><span class="wd-pop">40%</span></div>
-      <div class="wd"><span class="wd-n">Sun</span><b>87°</b><span class="wd-lo">–</span><span class="wd-bar" title="30% chance of rain"><i style="height:30%"></i></span><span class="wd-pop">30%</span></div>
+      <div class="wd"><span class="wd-n">Thu</span><b>87°</b><span class="wd-lo">74°</span><span class="wd-bar" title="50% chance of rain"><i style="height:50%"></i></span><span class="wd-pop">50%</span></div>
+      <div class="wd"><span class="wd-n">Fri</span><b>87°</b><span class="wd-lo">75°</span><span class="wd-bar" title="40% chance of rain"><i style="height:40%"></i></span><span class="wd-pop">40%</span></div>
+      <div class="wd"><span class="wd-n">Sat</span><b>86°</b><span class="wd-lo">75°</span><span class="wd-bar" title="40% chance of rain"><i style="height:40%"></i></span><span class="wd-pop">40%</span></div>
+      <div class="wd"><span class="wd-n">Sun</span><b>86°</b><span class="wd-lo">75°</span><span class="wd-bar" title="30% chance of rain"><i style="height:30%"></i></span><span class="wd-pop">30%</span></div>
+      <div class="wd"><span class="wd-n">Mon</span><b>87°</b><span class="wd-lo">–</span><span class="wd-bar" title="20% chance of rain"><i style="height:20%"></i></span><span class="wd-pop">20%</span></div>
     </div>
     <p class="fine">High, overnight low, and the highest rain chance of the day or night. National Weather Service forecast.</p>
   </section>
@@ -328,36 +347,33 @@ footer a{color:inherit}
       <div class="moon" id="moon" aria-hidden="true"></div>
       <div><strong id="moonName">Tonight's moon</strong><span id="moonNote">Waxing crescent.</span></div>
     </div>
-    <div class="alert"><i class="dot"></i><p><strong>Tides at Charlotte Amalie</strong><span id="tideText">Low at 7:16 am (0.2 ft). High at 4:10 pm (1.0 ft). Low at 12:25 am Tue (0.4 ft).</span></p></div>
+    <div class="alert"><i class="dot"></i><p><strong>Tides at Charlotte Amalie</strong><span id="tideText">Low at 8:47 am (0.4 ft). High at 4:38 pm (1.0 ft). Low at 12:05 am Wed (0.4 ft).</span></p></div>
   </section>
 
   <section class="card" aria-label="Coming up">
     <h2>Coming up</h2>
-      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Gospel in Paradise Vol. II</a><div>Sat Nov 14, 6:30 pm at the Antilles School Mark C. Marin Center. Live gospel acts and DJ JD. Tickets at gospelinparadise.com.</div></div>
-      <div class="ev"><a href="https://stthomassource.com/events/hebrew-congregation-of-st-thomas-fundraiser/" target="_blank" rel="noopener">Bingo at the Beach</a><div>Sun Nov 15, noon to 4 pm at Magens Bay, Shed #4. Free entry, a fundraiser for the Hebrew Congregation of St. Thomas.</div></div>
-      <div class="ev"><a href="https://gouvu.com/news/2026/7/30/mens-basketball-utah-valley-to-compete-in-2026-us-virgin-islands-paradise-jam.aspx" target="_blank" rel="noopener">Paradise Jam basketball</a><div>Men's tournament Nov 20 to 23 at the UVI Sports and Fitness Center. Women's games are listed for Nov 26 to 28.</div></div>
-      <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Open mic at The Shack</a><div>Sun Nov 22, 4 to 7 pm at The Shack at Hull Bay. Chris Kollin hosts.</div></div>
+      <div class="ev"><a href="https://www.visitusvi.com/events/" target="_blank" rel="noopener">USVI Charter Yacht Show</a><div>Nov 14 to 17 on St. Thomas, per the VisitUSVI events listing.</div></div>
       <div class="ev"><a href="https://stthomassource.com/music-events/" target="_blank" rel="noopener">Live music calendar</a><div>Every gig the St. Thomas Source lists, week by week.</div></div>
       <div class="ev"><a href="https://stthomassource.com/events/" target="_blank" rel="noopener">Full island calendar</a><div>Everything else on the St. Thomas Source events page.</div></div>
   </section>
 
-  <footer>Updated Mon Nov 2 morning · Sources: NWS, National Hurricane Center, NOAA tides, EPA UV index, Cruise Timetables, DPNR, St. Thomas Source</footer>
+  <footer>Updated Tue Nov 3 morning · Sources: NWS, National Hurricane Center, NOAA tides, EPA UV index, Cruise Timetables, DPNR, St. Thomas Source, St. Thomas Visitors Guide, VI Consortium, VisitUSVI</footer>
 </div>
 
 <!-- Daily data, replaced every morning. Times are St. Thomas local (AST).
      hourly: [hour, temperature F, rain chance %]   tides: [time, H or L, feet] -->
 <script type="application/json" id="dayData">
-{"hourly":[["2026-11-02T04",74,9],["2026-11-02T05",74,9],["2026-11-02T06",75,40],["2026-11-02T07",78,40],["2026-11-02T08",81,40],["2026-11-02T09",83,40],["2026-11-02T10",85,40],["2026-11-02T11",87,40],["2026-11-02T12",88,30],["2026-11-02T13",88,30],["2026-11-02T14",88,30],["2026-11-02T15",86,30],["2026-11-02T16",83,30],["2026-11-02T17",82,30],["2026-11-02T18",81,30],["2026-11-02T19",80,30],["2026-11-02T20",80,30],["2026-11-02T21",79,30],["2026-11-02T22",78,30],["2026-11-02T23",78,30],["2026-11-03T00",78,30],["2026-11-03T01",77,30],["2026-11-03T02",77,30],["2026-11-03T03",77,30],["2026-11-03T04",76,30],["2026-11-03T05",76,30],["2026-11-03T06",77,30],["2026-11-03T07",79,30],["2026-11-03T08",81,30],["2026-11-03T09",83,20],["2026-11-03T10",85,20],["2026-11-03T11",86,20],["2026-11-03T12",87,30],["2026-11-03T13",87,30],["2026-11-03T14",87,30],["2026-11-03T15",85,40],["2026-11-03T16",82,40],["2026-11-03T17",81,40],["2026-11-03T18",80,40],["2026-11-03T19",79,40]],"tides":[["2026-11-02T07:16","L",0.2],["2026-11-02T16:10","H",1.0],["2026-11-03T00:25","L",0.4],["2026-11-03T03:50","H",0.5],["2026-11-03T08:47","L",0.4],["2026-11-03T16:38","H",1.0],["2026-11-04T00:05","L",0.4],["2026-11-04T05:29","H",0.6],["2026-11-04T10:33","L",0.5],["2026-11-04T16:54","H",0.9]]}
+{"hourly":[["2026-11-03T04",76,50],["2026-11-03T05",76,50],["2026-11-03T06",77,30],["2026-11-03T07",79,30],["2026-11-03T08",82,30],["2026-11-03T09",84,10],["2026-11-03T10",86,10],["2026-11-03T11",87,10],["2026-11-03T12",88,9],["2026-11-03T13",88,9],["2026-11-03T14",88,9],["2026-11-03T15",86,40],["2026-11-03T16",83,40],["2026-11-03T17",82,40],["2026-11-03T18",80,40],["2026-11-03T19",80,40],["2026-11-03T20",79,40],["2026-11-03T21",78,40],["2026-11-03T22",78,40],["2026-11-03T23",77,40],["2026-11-04T00",77,50],["2026-11-04T01",76,50],["2026-11-04T02",76,50],["2026-11-04T03",76,50],["2026-11-04T04",75,50],["2026-11-04T05",75,50],["2026-11-04T06",76,30],["2026-11-04T07",78,30],["2026-11-04T08",81,30],["2026-11-04T09",83,50],["2026-11-04T10",85,50],["2026-11-04T11",86,50],["2026-11-04T12",87,30],["2026-11-04T13",87,30],["2026-11-04T14",87,30],["2026-11-04T15",85,20],["2026-11-04T16",82,20],["2026-11-04T17",81,20],["2026-11-04T18",80,50],["2026-11-04T19",79,50]],"tides":[["2026-11-03T00:25","L",0.4],["2026-11-03T03:50","H",0.5],["2026-11-03T08:47","L",0.4],["2026-11-03T16:38","H",1.0],["2026-11-04T00:05","L",0.4],["2026-11-04T05:29","H",0.6],["2026-11-04T10:33","L",0.5],["2026-11-04T16:54","H",0.9],["2026-11-05T00:09","L",0.4],["2026-11-05T06:38","H",0.8],["2026-11-05T12:14","L",0.6],["2026-11-05T17:01","H",0.8]]}
 </script>
 
 <script>
 /* stale-snapshot banner */
 (function(){
-  var updated=new Date(2026,10,2);
+  var updated=new Date(2026,10,3);
   var now=new Date(); now.setHours(0,0,0,0);
   var days=Math.round((now-updated)/86400000);
   if(days>=1){var el=document.getElementById('stale');
-    el.textContent='Heads up: this snapshot is from Mon Nov 2 ('+days+(days===1?' day':' days')+' ago). Tap Live forecast for current weather.';
+    el.textContent='Heads up: this snapshot is from Tue Nov 3 ('+days+(days===1?' day':' days')+' ago). Tap Live forecast for current weather.';
     el.hidden=false;}
 })();
 
